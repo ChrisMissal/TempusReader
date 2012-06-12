@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TempusReader", "TempusReader\TempusReader.csproj", "{97BB80EA-6A18-4E49-A968-64DF92CCE583}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{8384FFAA-459D-410C-A4A6-047644A36174}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97BB80EA-6A18-4E49-A968-64DF92CCE583}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97BB80EA-6A18-4E49-A968-64DF92CCE583}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97BB80EA-6A18-4E49-A968-64DF92CCE583}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97BB80EA-6A18-4E49-A968-64DF92CCE583}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8384FFAA-459D-410C-A4A6-047644A36174}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8384FFAA-459D-410C-A4A6-047644A36174}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8384FFAA-459D-410C-A4A6-047644A36174}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8384FFAA-459D-410C-A4A6-047644A36174}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
