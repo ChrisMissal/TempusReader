@@ -9,13 +9,26 @@ namespace Tests
     [TestFixture]
     public class TimeTests
     {
-        [TestCaseSource("TestData")]
+        [TestCaseSource("MultiValueTestData")]
+        [TestCaseSource("SingleValueTestData")]
         public Time Time_from_string(string value)
         {
             return new Time(value);
         }
 
-        public IEnumerable TestData
+        public IEnumerable MultiValueTestData
+        {
+            get
+            {
+                yield return new TestCaseData("2 days, 7 hours, 12 mins and 52 seconds")
+                    .Returns(new Time(New(days: 2, hours: 07, minutes: 12, seconds: 52)));
+
+                yield return new TestCaseData("4 days and 21 minutes")
+                    .Returns(new Time(New(days: 4, minutes: 21)));
+            }
+        }
+
+        public IEnumerable SingleValueTestData
         {
             get
             {
@@ -52,6 +65,12 @@ namespace Tests
             TimeSpan timeSpan = time;
 
             timeSpan.Minutes.ShouldBe(18);
+        }
+
+        public static TimeSpan New(int days = 0, int hours = 0, int minutes = 0, int seconds = 0, int milliseconds = 0)
+        {
+            // because these should be optional anyway -_-
+            return new TimeSpan(days, hours, minutes, seconds, milliseconds);
         }
     }
 }
