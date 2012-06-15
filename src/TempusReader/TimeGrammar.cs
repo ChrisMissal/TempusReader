@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text.RegularExpressions;
 using Parsley;
 
 namespace TempusReader
 {
     internal class TimeGrammar : Grammar
     {
+        private static readonly Regex TimePartRegex = new Regex(@"(?<whole>\d+)\:(?<fraction>\d+)", RegexOptions.Singleline | RegexOptions.CultureInvariant | RegexOptions.Compiled);
         private static readonly GrammarRule<double> Amount = new GrammarRule<double>();
         private static readonly GrammarRule<Token> TimeFrame = new GrammarRule<Token>();
         private static readonly GrammarRule<IEnumerable<Token>> Break = new GrammarRule<IEnumerable<Token>>();
@@ -18,7 +20,7 @@ namespace TempusReader
             Break.Rule = ZeroOrMore(Token(TimeLexer.Separator), Token(TimeLexer.Whitespace));
 
             Amount.Rule = from number in Token(TimeLexer.Number)
-                          select Double.Parse(number.Literal, NumberStyles.Any);
+                          select ParseAmount(number);
 
             TimeFrame.Rule = Choice(
                 Token(TimeLexer.Days),
@@ -36,6 +38,20 @@ namespace TempusReader
                 from pairs in ZeroOrMore(Pair, Break)
                 let parts = Time.FromDateParts(pairs)
                 select parts;
+        }
+
+        private static double ParseAmount(Token number)
+        {
+            var literal = number.Literal;
+            var match = TimePartRegex.Match(literal);
+            if (match.Success)
+            {
+                var whole = Int32.Parse(match.Groups["whole"].Value);
+                var fraction = Int32.Parse(match.Groups["fraction"].Value);
+                return whole + (fraction / 60d);
+            }
+
+            return Double.Parse(literal, NumberStyles.Any);
         }
     }
 }

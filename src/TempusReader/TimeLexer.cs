@@ -17,7 +17,7 @@ namespace TempusReader
         public static readonly TokenKind Separator = new Pattern("separator", @",|(and)", skippable: true);
         public static readonly TokenKind Whitespace = new Pattern("whitespace", @"\s+", skippable: true);
 
-        public static readonly Pattern Number = new Pattern("number", @"[0-9]+");
+        public static readonly TokenKind Number = new Pattern("number", @"(?=0(?!\d)|[1-9])\d+((\.|\:)\d+)?");
 
         public static readonly Pattern Milliseconds = new Pattern("milliseconds", MillisecondsPattern);
         public static readonly Pattern Seconds = new Pattern("seconds", SecondsPattern);

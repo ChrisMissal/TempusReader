@@ -9,11 +9,25 @@ namespace Tests
     [TestFixture]
     public class TimeTests
     {
+        [TestCaseSource("FractionalValueTestData")]
         [TestCaseSource("MultiValueTestData")]
         [TestCaseSource("SingleValueTestData")]
         public Time Time_from_string(string value)
         {
             return new Time(value);
+        }
+
+        public IEnumerable FractionalValueTestData
+        {
+            get
+            {
+                yield return new TestCaseData("4:15 hrs")
+                    .Returns(new Time(New(hours: 4, minutes: 15)));
+                yield return new TestCaseData("2.18 seconds")
+                    .Returns(new Time(New(seconds: 2, milliseconds: 180)));
+                yield return new TestCaseData("6.5 minutes")
+                    .Returns(new Time(New(minutes: 6, seconds: 30)));
+            }
         }
 
         public IEnumerable MultiValueTestData
