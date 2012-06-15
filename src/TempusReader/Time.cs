@@ -10,11 +10,11 @@ namespace TempusReader
         private static readonly Lexer Lexer = new TimeLexer();
         private static readonly IDictionary<string, Func<double, TimeSpan>> DateParts = new Dictionary<string, Func<double, TimeSpan>>
         {
-            { "milliseconds", TimeSpan.FromMilliseconds },
-            { "seconds", TimeSpan.FromSeconds },
-            { "minutes", TimeSpan.FromMinutes },
-            { "hours", TimeSpan.FromHours },
-            { "days", TimeSpan.FromDays },
+            { TimeLexer.Milliseconds.Name, TimeSpan.FromMilliseconds },
+            { TimeLexer.Seconds.Name, TimeSpan.FromSeconds },
+            { TimeLexer.Minutes.Name, TimeSpan.FromMinutes },
+            { TimeLexer.Hours.Name, TimeSpan.FromHours },
+            { TimeLexer.Days.Name, TimeSpan.FromDays },
         };
 
         private readonly TimeSpan _timeSpan;
