@@ -7,6 +7,7 @@ namespace TempusReader
 {
     public class Time : IEquatable<Time>, IComparable<Time>
     {
+        private static readonly Lexer Lexer = new TimeLexer();
         private static readonly IDictionary<string, Func<double, TimeSpan>> DateParts = new Dictionary<string, Func<double, TimeSpan>>
         {
             { "milliseconds", TimeSpan.FromMilliseconds },
@@ -25,8 +26,7 @@ namespace TempusReader
 
         public Time(string input)
         {
-            var lexer = new TimeLexer();
-            var tokens = lexer.Tokenize(input).ToArray();
+            var tokens = Lexer.Tokenize(input).ToArray();
 
             _timeSpan = TimeGrammar.TimeSpan.Parse(new TokenStream(tokens)).Value;
         }
@@ -74,9 +74,9 @@ namespace TempusReader
             return !Equals(left, right);
         }
 
-        public static TimeSpan FromDatePart(string datePart, double amount)
+        public static TimeSpan FromDateParts(IEnumerable<KeyValuePair<string, double>> times)
         {
-            return DateParts[datePart](amount);
+            return times.Aggregate(new TimeSpan(), (current, t) => current.Add(DateParts[t.Key](t.Value)));
         }
     }
 }

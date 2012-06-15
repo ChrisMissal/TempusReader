@@ -6,14 +6,15 @@ namespace TempusReader
     {
         public const string DaysPattern = @"(days|day|d)";
         public const string HoursPattern = @"(hours|hour|hrs|hr)";
-        public const string MinutesPattern = @"(minutes|minute|min|m)";
+        public const string MinutesPattern = @"(minutes|minute|mins|min|m)";
         public const string SecondsPattern = @"(seconds|second|sec|s)";
         public const string MillisecondsPattern = @"(milliseconds|ms)";
 
-        public TimeLexer() : base(Number, Milliseconds, Seconds, Minutes, Hours, Days, Whitespace)
+        public TimeLexer() : base(Number, Milliseconds, Seconds, Minutes, Hours, Days, Separator, Whitespace)
         {
         }
 
+        public static readonly TokenKind Separator = new Pattern("separator", @",|(and)", skippable: true);
         public static readonly TokenKind Whitespace = new Pattern("whitespace", @"\s+", skippable: true);
 
         public static readonly Pattern Number = new Pattern("number", @"[0-9]+");
