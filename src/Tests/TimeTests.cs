@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using NUnit.Framework;
 using Shouldly;
 using TempusReader;
@@ -9,12 +12,24 @@ namespace Tests
     [TestFixture]
     public class TimeTests
     {
+        [TestCaseSource("MultipleAndFractionalValueTestData")]
         [TestCaseSource("FractionalValueTestData")]
         [TestCaseSource("MultiValueTestData")]
         [TestCaseSource("SingleValueTestData")]
         public Time Time_from_string(string value)
         {
             return new Time(value);
+        }
+
+        public IEnumerable MultipleAndFractionalValueTestData
+        {
+            get
+            {
+                yield return new TestCaseData("3:45 hours and 2.5 mins")
+                    .Returns(new Time(New(hours: 3, minutes: 47, seconds: 30)));
+                yield return new TestCaseData("2.25 days, 4 hours, 90 mins")
+                    .Returns(new Time(New(days: 2, hours: 11, minutes: 30)));
+            }
         }
 
         public IEnumerable FractionalValueTestData
