@@ -19,8 +19,7 @@ namespace TempusReader
                               let adjusted = suffix.Kind.Name == "past" ? timeSpan.Negate() : timeSpan
                               select new Time(adjusted);
 
-            Time.Rule = from futures in Choice(TimePrefix, TimeSuffix)
-                        select futures;
+            Time.Rule = Choice(TimePrefix, TimeSuffix);
         }
     }
 }

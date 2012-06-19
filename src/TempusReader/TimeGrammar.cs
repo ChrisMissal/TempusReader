@@ -17,9 +17,9 @@ namespace TempusReader
 
         static TimeGrammar()
         {
-            Break.Rule = ZeroOrMore(Token(BaseLexer.Separator), Token(BaseLexer.Whitespace));
+            Break.Rule = ZeroOrMore(Token(TimeLexer.Separator), Token(TimeLexer.Whitespace));
 
-            Amount.Rule = from number in Token(BaseLexer.Number)
+            Amount.Rule = from number in Token(TimeLexer.Number)
                           select ParseAmount(number);
 
             TimeFrame.Rule = Choice(

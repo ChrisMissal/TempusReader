@@ -2,7 +2,6 @@
 using System.Collections;
 using NUnit.Framework;
 using TempusReader;
-using Shouldly;
 
 namespace Tests
 {
@@ -23,7 +22,7 @@ namespace Tests
             return new Date(BaseDate, input);
         }
 
-        public IEnumerable RelativeTimeTestData
+        public static IEnumerable RelativeTimeTestData
         {
             get
             {
