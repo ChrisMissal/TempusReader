@@ -38,7 +38,7 @@ namespace TempusReader
 
         public int CompareTo(Time other)
         {
-            return _timeSpan.CompareTo(other);
+            return _timeSpan.CompareTo(other._timeSpan);
         }
 
         public override string ToString()
