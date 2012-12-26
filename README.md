@@ -2,7 +2,7 @@
 
 ## What is this?
 
-TempusReader is just a project that I thought could be useful for parsing times in plain text English. Currently, this is just a fun example to try out [Parsley](https://github.com/plioi/parsley), but if anybody finds it useful, I'd love some feedback!
+TempusReader is just a project that I thought could be useful for parsing durations of time in plain text English. Currently, this is just a fun example to try out [Parsley](https://github.com/plioi/parsley), but if anybody finds it useful, I'd love some feedback!
 
 ## Examples
 
@@ -73,7 +73,7 @@ A `Time` instance can be created from text and cast to a `TimeSpan` instance.
 
 <!--- DateTests start -->
 ### Relative Date Values
-    `BaseDate = new DateTime(1982, 10, 21, 23, 40, 0);`
+    BaseDate = new DateTime(1982, 10, 21, 23, 40, 0);
 
     new Date(BaseDate, "in 10 minutes") // 10/21/1982 11:50:00 PM
 
