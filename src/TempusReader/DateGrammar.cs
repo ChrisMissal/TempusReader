@@ -1,3 +1,4 @@
+using System;
 using Parsley;
 
 namespace TempusReader
@@ -6,6 +7,7 @@ namespace TempusReader
     {
         private static readonly GrammarRule<Time> TimePrefix = new GrammarRule<Time>();
         private static readonly GrammarRule<Time> TimeSuffix = new GrammarRule<Time>();
+        public static readonly GrammarRule<Time> Yesterday = new GrammarRule<Time>();
         public static readonly GrammarRule<Time> Time = new GrammarRule<Time>();
 
         static DateGrammar()
@@ -19,7 +21,9 @@ namespace TempusReader
                               let adjusted = suffix.Kind.Name == "past" ? timeSpan.Negate() : timeSpan
                               select new Time(adjusted);
 
-            Time.Rule = Choice(TimePrefix, TimeSuffix);
+            Yesterday.Rule = from yesterday in Token(TimeLexer.Yesterday) select new Time(TimeSpan.FromDays(-1));
+
+            Time.Rule = Choice(TimePrefix, TimeSuffix, Yesterday);
         }
     }
 }
