@@ -60,7 +60,7 @@ namespace Tests
             Func<TestCaseData, string> format = td => string.Format(@"    new Date(BaseDate, ""{0}"") // {2}{1}", td.Arguments[0], Environment.NewLine, td.Result);
 
             yield return "### Relative Date Values";
-            yield return "    `BaseDate = new DateTime(1982, 10, 21, 23, 40, 0);`" + Environment.NewLine;
+            yield return string.Format("    `BaseDate = new DateTime({0});`{1}", DateTests.BaseDate.ToString("yyyy, M, d, H, m, s") , Environment.NewLine);
             foreach (var testData in DateTests.RelativeTimeTestData.Cast<TestCaseData>())
                 yield return format(testData);
         }

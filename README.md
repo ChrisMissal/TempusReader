@@ -81,6 +81,10 @@ A `Time` instance can be created from text and cast to a `TimeSpan` instance.
 
     new Date(BaseDate, "45 seconds ago") // 10/21/1982 11:39:15 PM
 
+    new Date(BaseDate, "yesterday") // 10/20/1982 11:40:00 PM
+
+    new Date(BaseDate, "tomorrow") // 10/22/1982 11:40:00 PM
+
 <!--- DateTests end -->
 
 A `Date` instance can be created from text and added/subtracted to a `DateTime` instance.
