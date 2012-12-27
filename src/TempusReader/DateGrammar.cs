@@ -8,6 +8,7 @@ namespace TempusReader
         private static readonly GrammarRule<Time> TimePrefix = new GrammarRule<Time>();
         private static readonly GrammarRule<Time> TimeSuffix = new GrammarRule<Time>();
         public static readonly GrammarRule<Time> Yesterday = new GrammarRule<Time>();
+        public static readonly GrammarRule<Time> Tomorrow = new GrammarRule<Time>();
         public static readonly GrammarRule<Time> Time = new GrammarRule<Time>();
 
         static DateGrammar()
@@ -24,7 +25,10 @@ namespace TempusReader
             Yesterday.Rule = from _ in Token(TimeLexer.Yesterday) 
                              select new Time(TimeSpan.FromDays(-1));
 
-            Time.Rule = Choice(TimePrefix, TimeSuffix, Yesterday);
+            Tomorrow.Rule = from _ in Token(TimeLexer.Tomorrow)
+                            select new Time(TimeSpan.FromDays(1));
+
+            Time.Rule = Choice(TimePrefix, TimeSuffix, Yesterday, Tomorrow);
         }
     }
 }
