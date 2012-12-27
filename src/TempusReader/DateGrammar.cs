@@ -21,7 +21,8 @@ namespace TempusReader
                               let adjusted = suffix.Kind.Name == "past" ? timeSpan.Negate() : timeSpan
                               select new Time(adjusted);
 
-            Yesterday.Rule = from yesterday in Token(TimeLexer.Yesterday) select new Time(TimeSpan.FromDays(-1));
+            Yesterday.Rule = from _ in Token(TimeLexer.Yesterday) 
+                             select new Time(TimeSpan.FromDays(-1));
 
             Time.Rule = Choice(TimePrefix, TimeSuffix, Yesterday);
         }

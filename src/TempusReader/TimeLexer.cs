@@ -30,6 +30,6 @@ namespace TempusReader
         public static readonly Pattern FromNowTime = new Pattern("future", FromNowTimePattern);
         public static readonly Pattern AgoTime = new Pattern("past", AgoTimePattern);
 
-        public static readonly Pattern Yesterday = new Pattern("past", @"yesterday");
+        public static readonly Keyword Yesterday = new Keyword("yesterday");
     }
 }
