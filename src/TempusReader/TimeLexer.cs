@@ -13,7 +13,7 @@ namespace TempusReader
         public const string FromNowTimePattern = @"from(\s+)now";
         public const string AgoTimePattern = @"ago";
 
-        public TimeLexer() : base(Milliseconds, Seconds, Minutes, Hours, Days, InTime, FromNowTime, AgoTime, Yesterday, Separator, Whitespace, Number)
+        public TimeLexer() : base(Milliseconds, Seconds, Minutes, Hours, Days, InTime, FromNowTime, AgoTime, Yesterday, Tomorrow, Separator, Whitespace, Number)
         {
         }
 
@@ -31,5 +31,6 @@ namespace TempusReader
         public static readonly Pattern AgoTime = new Pattern("past", AgoTimePattern);
 
         public static readonly Keyword Yesterday = new Keyword("yesterday");
+        public static readonly Keyword Tomorrow = new Keyword("tomorrow");
     }
 }

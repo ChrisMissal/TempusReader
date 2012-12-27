@@ -28,6 +28,8 @@ namespace Tests
                     .Returns(new Date(BaseDate.AddSeconds(-45)));
                 yield return new TestCaseData("yesterday")
                     .Returns(new Date(BaseDate.AddDays(-1)));
+                yield return new TestCaseData("tomorrow")
+                    .Returns(new Date(BaseDate.AddDays(1)));
             }
         }
     }
