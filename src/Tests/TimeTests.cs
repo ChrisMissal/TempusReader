@@ -28,7 +28,7 @@ namespace Tests
             {
                 yield return new TestCaseData("13 Hours and 14 MINs")
                     .Returns(new Time(New(hours: 13, minutes: 14)));
-                yield return new TestCaseData("13 SECONDS and 14 miLLeseconds")
+                yield return new TestCaseData("45 SECONDS and 50 miLLiseconds")
                     .Returns(new Time(New(seconds: 45, milliseconds: 50)));
             }
         }
