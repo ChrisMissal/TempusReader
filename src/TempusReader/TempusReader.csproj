@@ -32,8 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Parsley">
-      <HintPath>..\packages\Parsley.0.0.3\lib\net40\Parsley.dll</HintPath>
+    <Reference Include="Parsley, Version=0.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Parsley.0.0.4\lib\net40\Parsley.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

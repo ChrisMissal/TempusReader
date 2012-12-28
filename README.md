@@ -65,6 +65,11 @@ Simply create a new `Time` instance by passing in a string of text.
 
     new Time("2.25 days, 4 hours, 90 mins") // 2.11:30:00
 
+### Mixed Case (upper/lower) Values
+    new Time("13 Hours and 14 MINs") // 13:14:00
+
+    new Time("13 SECONDS and 14 miLLeseconds") // 00:00:45.0500000
+
 <!--- TimeTests end -->
 
 A `Time` instance can be created from text and cast to a `TimeSpan` instance.
@@ -73,7 +78,7 @@ A `Time` instance can be created from text and cast to a `TimeSpan` instance.
 
 <!--- DateTests start -->
 ### Relative Date Values
-    BaseDate = new DateTime(1982, 10, 21, 23, 40, 0);
+    var BaseDate = new DateTime(1982, 10, 21, 23, 40, 0);
 
     new Date(BaseDate, "in 10 minutes") // 10/21/1982 11:50:00 PM
 

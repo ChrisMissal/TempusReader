@@ -12,6 +12,7 @@ namespace Tests
     [TestFixture]
     public class TimeTests
     {
+        [TestCaseSource("MixedCaseValueTestData")]
         [TestCaseSource("MultipleAndFractionalValueTestData")]
         [TestCaseSource("FractionalValueTestData")]
         [TestCaseSource("MultiValueTestData")]
@@ -21,6 +22,16 @@ namespace Tests
             return new Time(value);
         }
 
+        public static IEnumerable MixedCaseValueTestData
+        {
+            get
+            {
+                yield return new TestCaseData("13 Hours and 14 MINs")
+                    .Returns(new Time(New(hours: 13, minutes: 14)));
+                yield return new TestCaseData("13 SECONDS and 14 miLLeseconds")
+                    .Returns(new Time(New(seconds: 45, milliseconds: 50)));
+            }
+        }
         public static IEnumerable MultipleAndFractionalValueTestData
         {
             get
