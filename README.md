@@ -68,7 +68,7 @@ Simply create a new `Time` instance by passing in a string of text.
 ### Mixed Case (upper/lower) Values
     new Time("13 Hours and 14 MINs") // 13:14:00
 
-    new Time("13 SECONDS and 14 miLLeseconds") // 00:00:45.0500000
+    new Time("45 SECONDS and 50 miLLiseconds") // 00:00:45.0500000
 
 <!--- TimeTests end -->
 
