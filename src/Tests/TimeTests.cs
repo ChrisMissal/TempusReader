@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using NUnit.Framework;
 using Shouldly;
 using TempusReader;
@@ -12,6 +9,7 @@ namespace Tests
     [TestFixture]
     public class TimeTests
     {
+        [TestCaseSource("EnglishWordsValueTestData")]
         [TestCaseSource("MixedCaseValueTestData")]
         [TestCaseSource("MultipleAndFractionalValueTestData")]
         [TestCaseSource("FractionalValueTestData")]
@@ -20,6 +18,33 @@ namespace Tests
         public Time Time_from_string(string value)
         {
             return new Time(value);
+        }
+
+        public static IEnumerable EnglishWordsValueTestData
+        {
+            get
+            {
+                yield return new TestCaseData("one hour")
+                    .Returns(new Time(New(hours: 1)));
+                yield return new TestCaseData("two minutes")
+                    .Returns(new Time(New(minutes: 2)));
+                yield return new TestCaseData("three seconds")
+                    .Returns(new Time(New(seconds: 3)));
+                yield return new TestCaseData("four ms")
+                    .Returns(new Time(New(milliseconds: 4)));
+                yield return new TestCaseData("five hrs")
+                    .Returns(new Time(New(hours: 5)));
+                yield return new TestCaseData("six mins")
+                    .Returns(new Time(New(minutes: 6)));
+                yield return new TestCaseData("seven sec")
+                    .Returns(new Time(New(seconds: 7)));
+                yield return new TestCaseData("eight milliseconds")
+                    .Returns(new Time(New(milliseconds: 8)));
+                yield return new TestCaseData("nine hours")
+                    .Returns(new Time(New(hours: 9)));
+                yield return new TestCaseData("ten minutes")
+                    .Returns(new Time(New(minutes: 10)));
+            }
         }
 
         public static IEnumerable MixedCaseValueTestData

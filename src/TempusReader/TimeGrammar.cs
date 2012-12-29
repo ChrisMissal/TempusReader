@@ -8,8 +8,11 @@ namespace TempusReader
 {
     internal class TimeGrammar : Grammar
     {
+        private static readonly TextToDigits TextToDigits = new TextToDigits();
+
         private static readonly Regex TimePartRegex = new Regex(@"(?<whole>\d+)\:(?<fraction>\d+)", RegexOptions.Singleline | RegexOptions.CultureInvariant | RegexOptions.Compiled);
         private static readonly GrammarRule<double> Amount = new GrammarRule<double>();
+        private static readonly GrammarRule<double> TextAmount = new GrammarRule<double>();
         private static readonly GrammarRule<Token> TimeFrame = new GrammarRule<Token>();
         private static readonly GrammarRule<IEnumerable<Token>> Break = new GrammarRule<IEnumerable<Token>>();
         private static readonly GrammarRule<KeyValuePair<string, double>> Pair = new GrammarRule<KeyValuePair<string, double>>();
@@ -19,7 +22,7 @@ namespace TempusReader
         {
             Break.Rule = ZeroOrMore(Token(TimeLexer.Separator), Token(TimeLexer.Whitespace));
 
-            Amount.Rule = from number in Token(TimeLexer.Number)
+            Amount.Rule = from number in Choice(Token(TimeLexer.NumberWord), Token(TimeLexer.Number))
                           select ParseAmount(number);
 
             TimeFrame.Rule = Choice(
@@ -42,6 +45,10 @@ namespace TempusReader
 
         private static double ParseAmount(Token number)
         {
+            var textDouble = TextToDigits.GetDefaultValue(number.Literal);
+            if (textDouble > 0d)
+                return textDouble;
+
             var literal = number.Literal;
             var match = TimePartRegex.Match(literal);
             if (match.Success)

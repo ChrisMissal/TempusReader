@@ -88,6 +88,10 @@ namespace Tests
             yield return "### Mixed Case (upper/lower) Values";
             foreach (var testData in TimeTests.MixedCaseValueTestData.Cast<TestCaseData>())
                 yield return format(testData);
+
+            yield return "### English Words to Values";
+            foreach (var testData in TimeTests.EnglishWordsValueTestData.Cast<TestCaseData>())
+                yield return format(testData);
         }
 
     }

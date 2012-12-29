@@ -45,6 +45,7 @@
     <Compile Include="DateGrammar.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextToDigits.cs" />
     <Compile Include="Time.cs" />
     <Compile Include="TimeGrammar.cs" />
     <Compile Include="TimeLexer.cs" />

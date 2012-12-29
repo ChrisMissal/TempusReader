@@ -16,13 +16,14 @@ namespace TempusReader
         public const string FromNowTimePattern = @"from(\s+)now";
         public const string AgoTimePattern = @"ago";
 
-        public TimeLexer() : base(Milliseconds, Seconds, Minutes, Hours, Days, InTime, FromNowTime, AgoTime, Yesterday, Tomorrow, Separator, Whitespace, Number)
+        public TimeLexer() : base(NumberWord, Number, Milliseconds, Seconds, Minutes, Hours, Days, InTime, FromNowTime, AgoTime, Yesterday, Tomorrow, Separator, Whitespace)
         {
         }
 
         public static readonly TokenKind Separator = new Pattern("separator", @",|(and)", skippable: true);
         public static readonly TokenKind Whitespace = new Pattern("whitespace", @"\s+", skippable: true);
         public static readonly TokenKind Number = new Pattern("number", @"(?=0(?!\d)|[1-9])\d+((\.|\:)\d+)?");
+        public static readonly TokenKind NumberWord = new Pattern("number", @"(one|two|three|four|five|six|seven|eight|nine|ten)");
 
         public static readonly Pattern Milliseconds = new Pattern("milliseconds", MillisecondsPattern, PatternRegexOptions);
         public static readonly Pattern Seconds = new Pattern("seconds", SecondsPattern, PatternRegexOptions);

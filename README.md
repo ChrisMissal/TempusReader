@@ -70,6 +70,27 @@ Simply create a new `Time` instance by passing in a string of text.
 
     new Time("45 SECONDS and 50 miLLiseconds") // 00:00:45.0500000
 
+### English Words to Values
+    new Time("one hour") // 01:00:00
+
+    new Time("two minutes") // 00:02:00
+
+    new Time("three seconds") // 00:00:03
+
+    new Time("four ms") // 00:00:00.0040000
+
+    new Time("five hrs") // 05:00:00
+
+    new Time("six mins") // 00:06:00
+
+    new Time("seven sec") // 00:00:07
+
+    new Time("eight milliseconds") // 00:00:00.0080000
+
+    new Time("nine hours") // 09:00:00
+
+    new Time("ten minutes") // 00:10:00
+
 <!--- TimeTests end -->
 
 A `Time` instance can be created from text and cast to a `TimeSpan` instance.
