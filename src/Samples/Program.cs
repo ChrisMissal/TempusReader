@@ -38,7 +38,7 @@ namespace Samples
 
         public override string ToString()
         {
-            return string.Format("Discount: ( Name = '{0}', Expires = '{1:yyyy-MM-dd HH:mm:ss.iii}' )",
+            return string.Format("Discount: ( Name = '{0}', Expires = '{1:yyyy-MM-dd HH:mm:ss}' )",
                 _name, _expirationDate);
         }
     }

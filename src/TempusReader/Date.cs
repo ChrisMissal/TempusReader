@@ -18,7 +18,7 @@ namespace TempusReader
         {
             var tokens = Lexer.Tokenize(input).ToArray();
 
-            var difference = DateGrammar.Time.Parse(new TokenStream(tokens)).Value;
+            var difference = TempusGrammar.Time.Parse(new TokenStream(tokens)).Value;
             _dateTime = dateTime.Add(difference);
         }
 

@@ -28,7 +28,7 @@ namespace TempusReader
         {
             var tokens = Lexer.Tokenize(input).ToArray();
 
-            _timeSpan = TimeGrammar.TimeSpan.Parse(new TokenStream(tokens)).Value;
+            _timeSpan = TempusGrammar.TimeSpan.Parse(new TokenStream(tokens)).Value;
         }
 
         public static implicit operator TimeSpan(Time time)
