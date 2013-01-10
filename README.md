@@ -4,6 +4,8 @@
 
 TempusReader is just a project that I thought could be useful for parsing durations of time in plain text English. Currently, this is just a fun example to try out [Parsley](https://github.com/plioi/parsley), but if anybody finds it useful, I'd love some feedback!
 
+[![Status of Dependencies](http://nugetstatus.com/tempusreader.png "Status of Dependencies")](http://nugetstatus.com/packages/tempusreader)
+
 ## Examples
 
 Simply create a new `Time` instance by passing in a string of text.
