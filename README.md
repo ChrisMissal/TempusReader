@@ -1,4 +1,4 @@
-# TempusReader
+# TempusReader [![endorse](http://api.coderwall.com/chrismissal/endorsecount.png)](http://coderwall.com/chrismissal)
 
 ## What is this?
 
