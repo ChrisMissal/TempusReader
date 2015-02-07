@@ -10,6 +10,9 @@ namespace Tests
     [TestFixture]
     public class DocumentationBuilder
     {
+        const string OpenCodeBlock = "```csharp";
+        const string CloseCodeBlock = "```";
+
         [TestCase("TimeTests")]
         [TestCase("DateTests")]
         [Explicit("Only used to run to output some text to be used in documentation.")]
@@ -57,41 +60,55 @@ namespace Tests
 
         private IEnumerable<string> DateTestDocumentation()
         {
-            Func<TestCaseData, string> format = td => string.Format(@"    new Date(BaseDate, ""{0}"") // {2}{1}", td.Arguments[0], Environment.NewLine, td.Result);
+            Func<TestCaseData, string> format = td => string.Format(@"new Date(BaseDate, ""{0}"") // {2}{1}", td.Arguments[0], Environment.NewLine, td.Result);
 
             yield return "### Relative Date Values";
-            yield return string.Format("    var BaseDate = new DateTime({0});{1}", DateTests.BaseDate.ToString("yyyy, M, d, H, m, s") , Environment.NewLine);
+            yield return OpenCodeBlock;
+            yield return string.Format("var BaseDate = new DateTime({0});{1}", DateTests.BaseDate.ToString("yyyy, M, d, H, m, s"), Environment.NewLine);
             foreach (var testData in DateTests.RelativeTimeTestData.Cast<TestCaseData>())
                 yield return format(testData);
+            yield return CloseCodeBlock;
         }
 
         private IEnumerable<string> TimeTestDocumentation()
         {
-            Func<TestCaseData, string> format = td => string.Format(@"    new Time(""{0}"") // {2}{1}", td.Arguments[0], Environment.NewLine, td.Result);
+            Func<TestCaseData, string> format = td => string.Format(@"new Time(""{0}"") // {2}{1}", td.Arguments[0], Environment.NewLine, td.Result);
 
             yield return "### Single Values";
+            yield return OpenCodeBlock;
             foreach (var testData in TimeTests.SingleValueTestData.Cast<TestCaseData>())
                 yield return format(testData);
+            yield return CloseCodeBlock;
 
             yield return "### Multiple Values";
+            yield return OpenCodeBlock;
             foreach (var testData in TimeTests.MultiValueTestData.Cast<TestCaseData>())
                 yield return format(testData);
+            yield return CloseCodeBlock;
 
             yield return "### Fractional Values";
+            yield return OpenCodeBlock;
             foreach (var testData in TimeTests.FractionalValueTestData.Cast<TestCaseData>())
                 yield return format(testData);
+            yield return CloseCodeBlock;
 
             yield return "### Multiple and Fractional Values";
+            yield return OpenCodeBlock;
             foreach (var testData in TimeTests.MultipleAndFractionalValueTestData.Cast<TestCaseData>())
                 yield return format(testData);
+            yield return CloseCodeBlock;
 
             yield return "### Mixed Case (upper/lower) Values";
+            yield return OpenCodeBlock;
             foreach (var testData in TimeTests.MixedCaseValueTestData.Cast<TestCaseData>())
                 yield return format(testData);
+            yield return CloseCodeBlock;
 
             yield return "### English Words to Values";
+            yield return OpenCodeBlock;
             foreach (var testData in TimeTests.EnglishWordsValueTestData.Cast<TestCaseData>())
                 yield return format(testData);
+            yield return CloseCodeBlock;
         }
 
     }
