@@ -1,10 +1,16 @@
-# TempusReader [![endorse](http://api.coderwall.com/chrismissal/endorsecount.png)](http://coderwall.com/chrismissal)
+# TempusReader
 
 ## What is this?
 
 TempusReader is just a project that I thought could be useful for parsing durations of time in plain text English. Currently, this is just a fun example to try out [Parsley](https://github.com/plioi/parsley), but if anybody finds it useful, I'd love some feedback!
 
 [![Status of Dependencies](http://nugetstatus.com/tempusreader.png "Status of Dependencies")](http://nugetstatus.com/packages/tempusreader)
+
+## Installation
+
+Use [NuGet to install TempusReader](https://nuget.org/packages/TempusReader):
+
+    PM> Install-Package TempusReader
 
 ## Examples
 
